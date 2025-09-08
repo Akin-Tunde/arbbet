@@ -152,3 +152,21 @@
   background: linear-gradient(135deg, #5a67d8, #6b46c1);
   transform: scale(1.05);
 }
+
+
+/* Add this to the bottom of src/App.css */
+
+/* Custom scrollbar for horizontal scrolling on mobile */
+.overflow-x-auto::-webkit-scrollbar {
+  height: 6px;
+}
+
+.overflow-x-auto::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.overflow-x-auto::-webkit-scrollbar-thumb {
+  background-color: rgba(107, 114, 128, 0.5); /* A semi-transparent gray */
+  border-radius: 10px;
+  border: 3px solid transparent;
+}
