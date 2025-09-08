@@ -71,32 +71,37 @@ function App() {
     setCurrentPage('copiedTraders');
   };
 
+  // Helper component to structure pages correctly
+  const PageWrapper = ({ children, currentPage, onNavigate }) => (
+    <div className="min-h-screen predictbase-gradient">
+      <Header currentPage={currentPage} onNavigate={onNavigate} />
+      <div className="overflow-x-hidden">{children}</div> {/* MOVED overflow-x-hidden HERE */}
+    </div>
+  );
+
   if (selectedMarket) {
     return <MarketDetailPage market={selectedMarket} onBack={handleBackToMarkets} />;
   }
 
   if (currentPage === 'leagues') {
     return (
-      <div className="min-h-screen predictbase-gradient overflow-x-hidden"> {/* <-- ADDED overflow-x-hidden */}
-        <Header currentPage={currentPage} onNavigate={setCurrentPage} />
+      <PageWrapper currentPage={currentPage} onNavigate={setCurrentPage}>
         <LeaguesPage />
-      </div>
+      </PageWrapper>
     );
   }
 
   if (currentPage === 'leaderboard') {
     return (
-      <div className="min-h-screen predictbase-gradient overflow-x-hidden"> {/* <-- ADDED overflow-x-hidden */}
-        <Header currentPage={currentPage} onNavigate={setCurrentPage} />
+      <PageWrapper currentPage={currentPage} onNavigate={setCurrentPage}>
         <LeaderboardPage onSelectTrader={handleSelectTrader} />
-      </div>
+      </PageWrapper>
     );
   }
 
   if (currentPage === 'traderProfile' && selectedTrader) {
     return (
-      <div className="min-h-screen predictbase-gradient overflow-x-hidden"> {/* <-- ADDED overflow-x-hidden */}
-        <Header currentPage={currentPage} onNavigate={setCurrentPage} />
+      <PageWrapper currentPage={currentPage} onNavigate={setCurrentPage}>
         <TraderProfilePage trader={selectedTrader} onBack={handleBackToLeaderboard} onCopyTrader={handleCopyTrader} />
         {isCopyModalOpen && (
           <CopyModal
@@ -106,25 +111,23 @@ function App() {
             trader={selectedTrader}
           />
         )}
-      </div>
+      </PageWrapper>
     );
   }
 
   if (currentPage === 'copiedTraders') {
     return (
-      <div className="min-h-screen predictbase-gradient overflow-x-hidden"> {/* <-- ADDED overflow-x-hidden */}
-        <Header currentPage={currentPage} onNavigate={setCurrentPage} />
+      <PageWrapper currentPage={currentPage} onNavigate={setCurrentPage}>
         <CopiedTradersDashboard />
-      </div>
+      </PageWrapper>
     );
   }
 
   if (currentPage === 'rewards') {
     return (
-      <div className="min-h-screen predictbase-gradient overflow-x-hidden"> {/* <-- ADDED overflow-x-hidden */}
-        <Header currentPage={currentPage} onNavigate={setCurrentPage} />
+      <PageWrapper currentPage={currentPage} onNavigate={setCurrentPage}>
         <RewardsPage />
-      </div>
+      </PageWrapper>
     );
   }
 
@@ -132,11 +135,12 @@ function App() {
     return <CreateMarket />;
   }
 
+  // Main Markets Page
   return (
-    <div className="min-h-screen predictbase-gradient overflow-x-hidden"> {/* <-- ADDED overflow-x-hidden */}
+    <div className="min-h-screen predictbase-gradient"> {/* REMOVED overflow-x-hidden */}
       <Header currentPage={currentPage} onNavigate={setCurrentPage} />
       
-      <main className="container mx-auto px-4 py-6">
+      <main className="container mx-auto px-4 py-6 overflow-x-hidden"> {/* ADDED overflow-x-hidden HERE */}
         <div className="mb-6">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-4">
             <SearchBar onSearch={setSearchTerm} />
