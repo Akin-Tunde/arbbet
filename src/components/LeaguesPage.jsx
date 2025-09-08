@@ -199,13 +199,11 @@ const LeaguesPage = () => {
           </TabsList>
 
           <TabsContent value="all" className="mt-6">
-            {/* THIS IS THE MODIFIED CONTAINER */}
-            <div className="flex gap-4 overflow-x-auto pb-4 horizontal-scrollbar md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-6">
+            <div className="grid w-full grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"> {/* <-- ADDED w-full HERE */}
               {filteredLeagues.map(league => (
-                // ADDED flex-shrink-0 and w-80 and md:w-auto to the Card
                 <Card 
                   key={league.id} 
-                  className="bg-white/10 border-white/20 hover:bg-white/15 transition-all cursor-pointer w-80 flex-shrink-0 md:w-auto"
+                  className="bg-white/10 border-white/20 hover:bg-white/15 transition-all cursor-pointer"
                   onClick={() => setSelectedLeague(league)}
                 >
                   <CardHeader>
@@ -256,13 +254,11 @@ const LeaguesPage = () => {
           </TabsContent>
 
           <TabsContent value="open" className="mt-6">
-            {/* THIS IS THE MODIFIED CONTAINER */}
-            <div className="flex gap-4 overflow-x-auto pb-4 horizontal-scrollbar md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-6">
+            <div className="grid w-full grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"> {/* <-- ADDED w-full HERE */}
               {filteredLeagues.filter(league => league.status === 'open').map(league => (
-                // ADDED flex-shrink-0 and w-80 and md:w-auto to the Card
                 <Card 
                   key={league.id} 
-                  className="bg-white/10 border-white/20 hover:bg-white/15 transition-all cursor-pointer w-80 flex-shrink-0 md:w-auto"
+                  className="bg-white/10 border-white/20 hover:bg-white/15 transition-all cursor-pointer"
                   onClick={() => setSelectedLeague(league)}
                 >
                   <CardHeader>
@@ -306,13 +302,11 @@ const LeaguesPage = () => {
           </TabsContent>
 
           <TabsContent value="active" className="mt-6">
-            {/* THIS IS THE MODIFIED CONTAINER */}
-            <div className="flex gap-4 overflow-x-auto pb-4 horizontal-scrollbar md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-6">
+            <div className="grid w-full grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"> {/* <-- ADDED w-full HERE */}
               {filteredLeagues.filter(league => league.status === 'active').map(league => (
-                // ADDED flex-shrink-0 and w-80 and md:w-auto to the Card
                 <Card 
                   key={league.id} 
-                  className="bg-white/10 border-white/20 hover:bg-white/15 transition-all cursor-pointer w-80 flex-shrink-0 md:w-auto"
+                  className="bg-white/10 border-white/20 hover:bg-white/15 transition-all cursor-pointer"
                   onClick={() => setSelectedLeague(league)}
                 >
                   <CardHeader>
