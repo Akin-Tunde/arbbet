@@ -41,7 +41,7 @@ const FilterTabs = ({ onFilterChange, onVolumeChange }) => {
   };
 
   return (
-    <div className="space-y-4 p-4 border-b border-border/40">
+    <div className="flex flex-col md:flex-row md:items-center gap-6 p-4 border-b border-border/40">
       {/* Status Filters */}
       <div className="flex flex-wrap gap-2">
         {statusFilters.map((filter) => (
@@ -101,4 +101,3 @@ const FilterTabs = ({ onFilterChange, onVolumeChange }) => {
 };
 
 export default FilterTabs;
-
