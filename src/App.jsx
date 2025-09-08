@@ -67,41 +67,35 @@ function App() {
 
   const handleConfirmCopy = (traderId, allocateAmount, stopLoss) => {
     console.log(`Copying trader ${traderId} with ${allocateAmount} USDC and ${stopLoss}% stop-loss.`);
-    // In a real application, you would send this data to a backend or smart contract
-    // For now, we'll just close the modal and navigate to the copied traders dashboard
     setIsCopyModalOpen(false);
     setCurrentPage('copiedTraders');
   };
 
-  // If a market is selected, show the detail page
   if (selectedMarket) {
     return <MarketDetailPage market={selectedMarket} onBack={handleBackToMarkets} />;
   }
 
-  // Show Leagues page
   if (currentPage === 'leagues') {
     return (
-      <div className="min-h-screen predictbase-gradient">
+      <div className="min-h-screen predictbase-gradient overflow-x-hidden"> {/* <-- ADDED overflow-x-hidden */}
         <Header currentPage={currentPage} onNavigate={setCurrentPage} />
         <LeaguesPage />
       </div>
     );
   }
 
-  // Show Leaderboard page
   if (currentPage === 'leaderboard') {
     return (
-      <div className="min-h-screen predictbase-gradient">
+      <div className="min-h-screen predictbase-gradient overflow-x-hidden"> {/* <-- ADDED overflow-x-hidden */}
         <Header currentPage={currentPage} onNavigate={setCurrentPage} />
         <LeaderboardPage onSelectTrader={handleSelectTrader} />
       </div>
     );
   }
 
-  // Show Trader Profile page
   if (currentPage === 'traderProfile' && selectedTrader) {
     return (
-      <div className="min-h-screen predictbase-gradient">
+      <div className="min-h-screen predictbase-gradient overflow-x-hidden"> {/* <-- ADDED overflow-x-hidden */}
         <Header currentPage={currentPage} onNavigate={setCurrentPage} />
         <TraderProfilePage trader={selectedTrader} onBack={handleBackToLeaderboard} onCopyTrader={handleCopyTrader} />
         {isCopyModalOpen && (
@@ -116,37 +110,33 @@ function App() {
     );
   }
 
-  // Show Copied Traders Dashboard
   if (currentPage === 'copiedTraders') {
     return (
-      <div className="min-h-screen predictbase-gradient">
+      <div className="min-h-screen predictbase-gradient overflow-x-hidden"> {/* <-- ADDED overflow-x-hidden */}
         <Header currentPage={currentPage} onNavigate={setCurrentPage} />
         <CopiedTradersDashboard />
       </div>
     );
   }
 
-  // Show Rewards page
   if (currentPage === 'rewards') {
     return (
-      <div className="min-h-screen predictbase-gradient">
+      <div className="min-h-screen predictbase-gradient overflow-x-hidden"> {/* <-- ADDED overflow-x-hidden */}
         <Header currentPage={currentPage} onNavigate={setCurrentPage} />
         <RewardsPage />
       </div>
     );
   }
 
-  // Show Create Market page
   if (currentPage === 'createMarket') {
     return <CreateMarket />;
   }
 
   return (
-    <div className="min-h-screen predictbase-gradient">
+    <div className="min-h-screen predictbase-gradient overflow-x-hidden"> {/* <-- ADDED overflow-x-hidden */}
       <Header currentPage={currentPage} onNavigate={setCurrentPage} />
       
       <main className="container mx-auto px-4 py-6">
-        {/* Search and Filters */}
         <div className="mb-6">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-4">
             <SearchBar onSearch={setSearchTerm} />
@@ -164,7 +154,6 @@ function App() {
           />
         </div>
 
-        {/* Markets Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
           {filteredMarkets.slice(0, visibleMarkets).map(market => (
             <div key={market.id} onClick={() => handleMarketSelect(market)} className="cursor-pointer">
@@ -173,7 +162,6 @@ function App() {
           ))}
         </div>
 
-        {/* Load More Button */}
         {visibleMarkets < filteredMarkets.length && (
           <div className="text-center mb-8">
             <Button 
@@ -185,7 +173,6 @@ function App() {
           </div>
         )}
 
-        {/* No Results */}
         {filteredMarkets.length === 0 && (
           <div className="text-center py-12">
             <div className="text-muted-foreground text-lg">
@@ -205,16 +192,12 @@ function App() {
           </div>
         )}
 
-        {/* Recent Activity */}
         <RecentActivity />
 
-        {/* Platform Stats (Commented Out) */}
-{/* <PlatformStats /> */} 
+        {/* <PlatformStats /> */}
       </main>
     </div>
   );
 }
 
 export default App;
-
-
