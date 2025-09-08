@@ -186,6 +186,3 @@
   background-color: rgba(107, 114, 128, 0.4); /* A semi-transparent gray */
   border-radius: 10px;
 }
-html {
-  overflow-y: scroll;
-}
