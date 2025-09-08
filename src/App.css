@@ -170,3 +170,19 @@
   border-radius: 10px;
   border: 3px solid transparent;
 }
+
+/* Add this to the bottom of src/App.css */
+
+/* Custom scrollbar for horizontal filter tabs */
+.horizontal-scrollbar::-webkit-scrollbar {
+  height: 4px;
+}
+
+.horizontal-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.horizontal-scrollbar::-webkit-scrollbar-thumb {
+  background-color: rgba(107, 114, 128, 0.4); /* A semi-transparent gray */
+  border-radius: 10px;
+}
