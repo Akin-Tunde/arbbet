@@ -53,6 +53,7 @@ const FilterTabs = ({ onFilterChange, onVolumeChange }) => {
               onClick={() => handleStatusFilter(filter.id)}
               className={`
                 flex-shrink-0
+                text-xs md:text-sm /* <-- ADDED THIS LINE */
                 ${activeFilter === filter.id ? 'filter-button-active' : 'hover:bg-accent'}
                 transition-all duration-200
               `}
@@ -77,6 +78,7 @@ const FilterTabs = ({ onFilterChange, onVolumeChange }) => {
               onClick={() => handleCategoryFilter(category.id)}
               className={`
                 flex-shrink-0
+                text-xs md:text-sm /* <-- AND ADDED THIS LINE */
                 ${activeCategory === category.id ? 'filter-button-active' : 'hover:bg-accent'}
                 transition-all duration-200
               `}
