@@ -41,47 +41,57 @@ const FilterTabs = ({ onFilterChange, onVolumeChange }) => {
   };
 
   return (
-    <div className="flex flex-col md:flex-row md:items-center gap-6 p-4 border-b border-border/40">
-      {/* Status Filters */}
-      <div className="flex flex-wrap gap-2">
-        {statusFilters.map((filter) => (
-          <Button
-            key={filter.id}
-            variant={activeFilter === filter.id ? "default" : "outline"}
-            size="sm"
-            onClick={() => handleStatusFilter(filter.id)}
-            className={`
-              ${activeFilter === filter.id ? 'filter-button-active' : 'hover:bg-accent'}
-              transition-all duration-200
-            `}
-          >
-            <div className={`w-2 h-2 rounded-full ${filter.color} mr-2`} />
-            {filter.label}
-          </Button>
-        ))}
+    <div className="space-y-4 p-4 border-b border-border/40">
+      {/* Status Filters - Horizontally Scrollable */}
+      <div className="relative">
+        <div className="flex gap-2 overflow-x-auto pb-2 horizontal-scrollbar">
+          {statusFilters.map((filter) => (
+            <Button
+              key={filter.id}
+              variant={activeFilter === filter.id ? "default" : "outline"}
+              size="sm"
+              onClick={() => handleStatusFilter(filter.id)}
+              className={`
+                flex-shrink-0
+                ${activeFilter === filter.id ? 'filter-button-active' : 'hover:bg-accent'}
+                transition-all duration-200
+              `}
+            >
+              <div className={`w-2 h-2 rounded-full ${filter.color} mr-2`} />
+              {filter.label}
+            </Button>
+          ))}
+        </div>
+        {/* Gradient fade overlay to indicate scroll */}
+        <div className="absolute top-0 bottom-0 right-0 w-12 bg-gradient-to-l from-background to-transparent pointer-events-none lg:hidden" />
       </div>
 
-      {/* Category Filters */}
-      <div className="flex flex-wrap gap-2">
-        {categoryFilters.map((category) => (
-          <Button
-            key={category.id}
-            variant={activeCategory === category.id ? "default" : "outline"}
-            size="sm"
-            onClick={() => handleCategoryFilter(category.id)}
-            className={`
-              ${activeCategory === category.id ? 'filter-button-active' : 'hover:bg-accent'}
-              transition-all duration-200
-            `}
-          >
-            <div className={`w-2 h-2 rounded-full ${category.color} mr-2`} />
-            {category.label}
-          </Button>
-        ))}
+      {/* Category Filters - Horizontally Scrollable */}
+      <div className="relative">
+        <div className="flex gap-2 overflow-x-auto pb-2 horizontal-scrollbar">
+          {categoryFilters.map((category) => (
+            <Button
+              key={category.id}
+              variant={activeCategory === category.id ? "default" : "outline"}
+              size="sm"
+              onClick={() => handleCategoryFilter(category.id)}
+              className={`
+                flex-shrink-0
+                ${activeCategory === category.id ? 'filter-button-active' : 'hover:bg-accent'}
+                transition-all duration-200
+              `}
+            >
+              <div className={`w-2 h-2 rounded-full ${category.color} mr-2`} />
+              {category.label}
+            </Button>
+          ))}
+        </div>
+        {/* Gradient fade overlay to indicate scroll */}
+        <div className="absolute top-0 bottom-0 right-0 w-12 bg-gradient-to-l from-background to-transparent pointer-events-none lg:hidden" />
       </div>
 
       {/* Volume Filter */}
-      <div className="flex items-center space-x-4 max-w-md">
+      <div className="flex items-center space-x-4 max-w-md pt-2">
         <span className="text-sm text-muted-foreground whitespace-nowrap">Volume</span>
         <div className="flex-1">
           <Slider
