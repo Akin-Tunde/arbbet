@@ -26,9 +26,9 @@ const RecentActivity = () => {
   ];
 
   return (
-    <div className="grid grid-cols-3 gap-6 mt-8">
+    <div className="flex space-x-4 overflow-x-auto lg:grid lg:grid-cols-3 lg:gap-6 lg:space-x-0 mt-8">
       {/* Recent Bets */}
-      <div className="bg-card rounded-lg p-4 border border-border/40">
+      <div className="bg-card rounded-lg p-4 border border-border/40 w-80 flex-shrink-0 lg:w-auto">
         <div className="flex items-center space-x-2 mb-4">
           <TrendingUp className="h-5 w-5 text-blue-400" />
           <h3 className="text-lg font-semibold text-foreground">Recent Bets</h3>
@@ -37,7 +37,7 @@ const RecentActivity = () => {
           {recentBets.map((bet, index) => (
             <div key={index} className="flex items-center justify-between py-2 border-b border-border/20 last:border-b-0">
               <div className="flex-1">
-                <div className="flex items-center space-x-2">
+                <div className="flex items-center space-x-2 flex-wrap">
                   <span className="text-sm font-medium text-blue-400">{bet.user}</span>
                   <span className="text-sm text-muted-foreground">placed</span>
                   <span className="text-sm font-medium text-green-400">{bet.amount}</span>
@@ -55,7 +55,7 @@ const RecentActivity = () => {
       </div>
 
       {/* Recent Claims */}
-      <div className="bg-card rounded-lg p-4 border border-border/40">
+      <div className="bg-card rounded-lg p-4 border border-border/40 w-80 flex-shrink-0 lg:w-auto">
         <div className="flex items-center space-x-2 mb-4">
           <Award className="h-5 w-5 text-green-400" />
           <h3 className="text-lg font-semibold text-foreground">Recent Claims</h3>
@@ -64,7 +64,7 @@ const RecentActivity = () => {
           {recentClaims.map((claim, index) => (
             <div key={index} className="flex items-center justify-between py-2 border-b border-border/20 last:border-b-0">
               <div className="flex-1">
-                <div className="flex items-center space-x-2">
+                <div className="flex items-center space-x-2 flex-wrap">
                   <span className="text-sm font-medium text-blue-400">{claim.user}</span>
                   <span className="text-sm text-muted-foreground">claimed</span>
                   <span className="text-sm font-medium text-green-400">{claim.amount}</span>
@@ -83,7 +83,7 @@ const RecentActivity = () => {
       </div>
 
       {/* Recent Markets */}
-      <div className="bg-card rounded-lg p-4 border border-border/40">
+      <div className="bg-card rounded-lg p-4 border border-border/40 w-80 flex-shrink-0 lg:w-auto">
         <div className="flex items-center space-x-2 mb-4">
           <Clock className="h-5 w-5 text-purple-400" />
           <h3 className="text-lg font-semibold text-foreground">Recent Markets</h3>
@@ -107,4 +107,3 @@ const RecentActivity = () => {
 };
 
 export default RecentActivity;
-
