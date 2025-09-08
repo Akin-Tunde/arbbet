@@ -199,7 +199,7 @@ const LeaguesPage = () => {
           </TabsList>
 
           <TabsContent value="all" className="mt-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid w-full grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"> {/* <-- ADDED w-full HERE */}
               {filteredLeagues.map(league => (
                 <Card 
                   key={league.id} 
@@ -254,7 +254,7 @@ const LeaguesPage = () => {
           </TabsContent>
 
           <TabsContent value="open" className="mt-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid w-full grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"> {/* <-- ADDED w-full HERE */}
               {filteredLeagues.filter(league => league.status === 'open').map(league => (
                 <Card 
                   key={league.id} 
@@ -302,7 +302,7 @@ const LeaguesPage = () => {
           </TabsContent>
 
           <TabsContent value="active" className="mt-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid w-full grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"> {/* <-- ADDED w-full HERE */}
               {filteredLeagues.filter(league => league.status === 'active').map(league => (
                 <Card 
                   key={league.id} 
@@ -384,4 +384,3 @@ const LeaguesPage = () => {
 };
 
 export default LeaguesPage;
-
