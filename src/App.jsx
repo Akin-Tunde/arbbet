@@ -208,8 +208,8 @@ function App() {
         {/* Recent Activity */}
         <RecentActivity />
 
-        {/* Platform Stats */}
-        <PlatformStats />
+        {/* Platform Stats (Commented Out) */}
+{/* <PlatformStats /> */} 
       </main>
     </div>
   );
