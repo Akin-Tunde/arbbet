@@ -35,7 +35,7 @@ const LeaderboardPageFixed = ({ onSelectTrader }) => {
         <select 
           value={filterCategory} 
           onChange={(e) => setFilterCategory(e.target.value)}
-          className="w-[180px] px-3 py-2 bg-gray-800 text-white border border-gray-600 rounded-md"
+          className="w-full md:w-[180px] px-3 py-2 bg-gray-800 text-white border border-gray-600 rounded-md"
         >
           <option value="">All Categories</option>
           <option value="crypto">Crypto</option>
@@ -48,7 +48,7 @@ const LeaderboardPageFixed = ({ onSelectTrader }) => {
         <select 
           value={filterTimeframe} 
           onChange={(e) => setFilterTimeframe(e.target.value)}
-          className="w-[180px] px-3 py-2 bg-gray-800 text-white border border-gray-600 rounded-md"
+          className="w-full md:w-[180px] px-3 py-2 bg-gray-800 text-white border border-gray-600 rounded-md"
         >
           <option value="all-time">All Time</option>
           <option value="this-year">This Year</option>
@@ -59,7 +59,7 @@ const LeaderboardPageFixed = ({ onSelectTrader }) => {
         <select 
           value={filterRisk} 
           onChange={(e) => setFilterRisk(e.target.value)}
-          className="w-[180px] px-3 py-2 bg-gray-800 text-white border border-gray-600 rounded-md"
+          className="w-full md:w-[180px] px-3 py-2 bg-gray-800 text-white border border-gray-600 rounded-md"
         >
           <option value="">All Risks</option>
           <option value="Low">Low</option>
@@ -71,22 +71,22 @@ const LeaderboardPageFixed = ({ onSelectTrader }) => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredTraders.map(trader => (
           <Card key={trader.id} className="bg-gray-800 text-white border-gray-700">
-            <CardHeader>
-              <CardTitle className="flex justify-between items-center">
+            <CardHeader className="pb-2">
+              <CardTitle className="flex justify-between items-center text-base md:text-lg">
                 <span>#{trader.rank} - {trader.username}</span>
                 <span className="text-green-400">P&L: ${trader.pnl.toLocaleString()}</span>
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-sm text-gray-400 mb-2">Risk Score: <span className={`font-semibold ${
+              <p className="text-xs md:text-sm text-gray-400 mb-2">Risk Score: <span className={`font-semibold ${
                 trader.riskScore === 'Low' ? 'text-green-500' :
                 trader.riskScore === 'Medium' ? 'text-yellow-500' :
                 'text-red-500'
               }`}>{trader.riskScore}</span></p>
-              <p className="text-sm text-gray-400 mb-4">Copied by {trader.copiers} users</p>
+              <p className="text-xs md:text-sm text-gray-400 mb-4">Copied by {trader.copiers} users</p>
               <div className="flex justify-between items-center">
-                <Button onClick={() => onSelectTrader(trader)} className="bg-blue-600 hover:bg-blue-700 text-white">View Profile</Button>
-                <Button className="bg-green-600 hover:bg-green-700 text-white">Copy</Button>
+                <Button onClick={() => onSelectTrader(trader)} size="sm" className="bg-blue-600 hover:bg-blue-700 text-white text-xs md:text-sm px-3 md:px-4">View Profile</Button>
+                <Button size="sm" className="bg-green-600 hover:bg-green-700 text-white text-xs md:text-sm px-3 md:px-4">Copy</Button>
               </div>
             </CardContent>
           </Card>
@@ -103,4 +103,3 @@ const LeaderboardPageFixed = ({ onSelectTrader }) => {
 };
 
 export default LeaderboardPageFixed;
-
